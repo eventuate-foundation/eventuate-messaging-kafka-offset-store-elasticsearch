@@ -1,0 +1,6 @@
+include 'eventuate-messaging-kafka-offset-store-elasticsearch-consumer'
+include 'eventuate-messaging-kafka-offset-store-elasticsearch-spring-consumer'
+include 'eventuate-messaging-kafka-offset-store-elasticsearch-micronaut-consumer'
+include 'eventuate-messaging-kafka-offset-store-elasticsearch-spring-integration-test'
+include 'eventuate-messaging-kafka-offset-store-elasticsearch-micronaut-integration-test'
+
