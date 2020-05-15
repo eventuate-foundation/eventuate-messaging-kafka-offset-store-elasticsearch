@@ -2,6 +2,7 @@ package io.eventuate.tram.consumer.kafka.elasticsearch;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("eventuate.local.kafka.elasticsearch")

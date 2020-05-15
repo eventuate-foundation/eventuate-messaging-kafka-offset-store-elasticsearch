@@ -1,24 +1,25 @@
 package io.eventuate.messaging.kafka.elasticsearch.consumer;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import javax.inject.Singleton;
-import org.apache.http.HttpHost;
-import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestHighLevelClient;
 import io.eventuate.messaging.kafka.basic.consumer.EventuateKafkaConsumerConfigurationProperties;
-import io.eventuate.messaging.kafka.basic.consumer.KafkaConsumerConfigurer;
+import io.eventuate.messaging.kafka.basic.consumer.KafkaConsumerFactory;
 import io.eventuate.messaging.kafka.common.EventuateKafkaConfigurationProperties;
 import io.eventuate.messaging.kafka.consumer.MessageConsumerKafkaImpl;
 import io.eventuate.messaging.kafka.producer.EventuateKafkaProducer;
 import io.eventuate.messaging.kafka.producer.EventuateKafkaProducerConfigurationProperties;
 import io.eventuate.tram.consumer.kafka.elasticsearch.ElasticsearchConstants;
-import io.eventuate.tram.consumer.kafka.elasticsearch.ElasticsearchKafkaConsumerConfigurer;
+import io.eventuate.tram.consumer.kafka.elasticsearch.ElasticsearchKafkaConsumerFactory;
 import io.eventuate.tram.consumer.kafka.elasticsearch.ElasticsearchOffsetStorageConfigurationProperties;
 import io.micronaut.context.annotation.Factory;
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestHighLevelClient;
+
+import javax.inject.Singleton;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @Factory
-public class EventuateKafkaProducerConsumerFactory {
+public class EventuateKafkaConsumerFactory {
   @Singleton
   public EventuateKafkaProducer producer(EventuateKafkaConfigurationProperties kafkaProperties, EventuateKafkaProducerConfigurationProperties producerProperties) {
     return new EventuateKafkaProducer(kafkaProperties.getBootstrapServers(), producerProperties);
@@ -27,13 +28,13 @@ public class EventuateKafkaProducerConsumerFactory {
   @Singleton
   public MessageConsumerKafkaImpl messageConsumerKafka(EventuateKafkaConfigurationProperties props,
                                                        EventuateKafkaConsumerConfigurationProperties eventuateKafkaConsumerConfigurationProperties,
-                                                       KafkaConsumerConfigurer kafkaConsumerConfigurer) {
-    return new MessageConsumerKafkaImpl(props.getBootstrapServers(), eventuateKafkaConsumerConfigurationProperties, kafkaConsumerConfigurer);
+                                                       KafkaConsumerFactory kafkaConsumerFactory) {
+    return new MessageConsumerKafkaImpl(props.getBootstrapServers(), eventuateKafkaConsumerConfigurationProperties, kafkaConsumerFactory);
   }
 
   @Singleton
-  public KafkaConsumerConfigurer kafkaConsumerConfigurer(RestHighLevelClient client, ElasticsearchOffsetStorageConfigurationProperties properties) {
-    return new ElasticsearchKafkaConsumerConfigurer(client, properties);
+  public KafkaConsumerFactory kafkaConsumerFactory(RestHighLevelClient client, ElasticsearchOffsetStorageConfigurationProperties properties) {
+    return new ElasticsearchKafkaConsumerFactory(client, properties);
   }
 
   @Singleton

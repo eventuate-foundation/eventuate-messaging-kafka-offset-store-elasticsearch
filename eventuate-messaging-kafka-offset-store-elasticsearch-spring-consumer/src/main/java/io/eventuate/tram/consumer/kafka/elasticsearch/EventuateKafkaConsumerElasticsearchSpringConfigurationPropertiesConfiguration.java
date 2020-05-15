@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Bean;
 @EnableConfigurationProperties(EventuateKafkaConsumerElasticsearchSpringConfigurationProperties.class)
 public class EventuateKafkaConsumerElasticsearchSpringConfigurationPropertiesConfiguration {
 
-    @Bean
-    ElasticsearchOffsetStorageConfigurationProperties eventuateKafkaConsumerElasticsearchSpringConfigurationProperties(EventuateKafkaConsumerElasticsearchSpringConfigurationProperties eventuateKafkaConsumerElasticsearchSpringConfigurationProperties) {
-        ElasticsearchOffsetStorageConfigurationProperties properties = new ElasticsearchOffsetStorageConfigurationProperties(eventuateKafkaConsumerElasticsearchSpringConfigurationProperties.getProperties());
-        properties.setOffsetStorageIndexName(eventuateKafkaConsumerElasticsearchSpringConfigurationProperties.getOffsetStorageIndexName());
-        properties.setOffsetStorageTypeName(eventuateKafkaConsumerElasticsearchSpringConfigurationProperties.getOffsetStorageTypeName());
-        return properties;
-    }
+  @Bean
+  ElasticsearchOffsetStorageConfigurationProperties eventuateKafkaConsumerElasticsearchSpringConfigurationProperties(EventuateKafkaConsumerElasticsearchSpringConfigurationProperties eventuateKafkaConsumerElasticsearchSpringConfigurationProperties) {
+    ElasticsearchOffsetStorageConfigurationProperties properties = new ElasticsearchOffsetStorageConfigurationProperties(eventuateKafkaConsumerElasticsearchSpringConfigurationProperties.getProperties());
+    properties.setOffsetStorageIndexName(eventuateKafkaConsumerElasticsearchSpringConfigurationProperties.getOffsetStorageIndexName());
+    properties.setOffsetStorageTypeName(eventuateKafkaConsumerElasticsearchSpringConfigurationProperties.getOffsetStorageTypeName());
+    return properties;
+  }
 }

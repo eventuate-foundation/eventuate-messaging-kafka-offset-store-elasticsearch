@@ -1,15 +1,16 @@
 package io.eventuate.messaging.kafka.elasticsearch.consumer;
 
-import javax.inject.Inject;
-import org.junit.jupiter.api.Test;
 import io.eventuate.messaging.kafka.basic.consumer.AbstractEventuateKafkaBasicConsumerTest;
 import io.eventuate.messaging.kafka.basic.consumer.EventuateKafkaConsumerConfigurationProperties;
-import io.eventuate.messaging.kafka.basic.consumer.KafkaConsumerConfigurer;
+import io.eventuate.messaging.kafka.basic.consumer.KafkaConsumerFactory;
 import io.eventuate.messaging.kafka.common.EventuateKafkaConfigurationProperties;
 import io.eventuate.messaging.kafka.consumer.MessageConsumerKafkaImpl;
 import io.eventuate.messaging.kafka.producer.EventuateKafkaProducer;
 import io.micronaut.context.annotation.Property;
 import io.micronaut.test.annotation.MicronautTest;
+import org.junit.jupiter.api.Test;
+
+import javax.inject.Inject;
 
 @MicronautTest
 @Property(name = "eventuate.local.kafka.consumer.backPressure.high", value = "3")
@@ -28,7 +29,7 @@ public class EventuateKafkaElasticsearchConsumerMicronautTest extends AbstractEv
   private MessageConsumerKafkaImpl consumer;
 
   @Inject
-  private KafkaConsumerConfigurer configurer;
+  private KafkaConsumerFactory kafkaConsumerFactory;
 
   @Test
   @Override
@@ -75,7 +76,7 @@ public class EventuateKafkaElasticsearchConsumerMicronautTest extends AbstractEv
   }
 
   @Override
-  protected KafkaConsumerConfigurer getConfigurer() {
-    return configurer;
+  protected KafkaConsumerFactory getKafkaConsumerFactory() {
+    return kafkaConsumerFactory;
   }
 }

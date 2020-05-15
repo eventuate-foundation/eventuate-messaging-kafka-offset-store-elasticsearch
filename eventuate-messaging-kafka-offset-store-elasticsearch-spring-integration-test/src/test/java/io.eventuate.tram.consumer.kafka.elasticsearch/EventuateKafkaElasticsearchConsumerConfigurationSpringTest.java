@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {
-    EventuateKafkaConsumerElasticsearchSpringConfigurationPropertiesConfiguration.class,
+        EventuateKafkaConsumerElasticsearchSpringConfigurationPropertiesConfiguration.class,
 })
 public class EventuateKafkaElasticsearchConsumerConfigurationSpringTest {
 
