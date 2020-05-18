@@ -74,8 +74,3 @@ gradle.projectsEvaluated {
         classpath = files(subprojects.findAll { subproject -> subproject.plugins.hasPlugin(PublicModulePlugin) }.javadoc.classpath)
     }
 }
-
-
-
-
-

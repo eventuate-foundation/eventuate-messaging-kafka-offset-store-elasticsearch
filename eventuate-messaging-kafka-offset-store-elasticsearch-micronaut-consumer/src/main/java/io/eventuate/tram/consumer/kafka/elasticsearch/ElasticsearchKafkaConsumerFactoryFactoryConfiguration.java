@@ -7,7 +7,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import javax.inject.Singleton;
 
 @Factory
-public class ElasticsearchKafkaConsumerFactoryConfiguration {
+public class ElasticsearchKafkaConsumerFactoryFactoryConfiguration {
   @Singleton
   KafkaConsumerFactory kafkaConsumerFactory(RestHighLevelClient client,
                                             ElasticsearchOffsetStorageConfigurationProperties properties) {
