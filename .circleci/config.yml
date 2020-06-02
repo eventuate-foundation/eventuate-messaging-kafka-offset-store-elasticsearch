@@ -15,9 +15,9 @@ jobs:
             - ~/.gradle
           key: eventuate-messaging-kafka-offset-store-elasticsearch-{{ checksum "gradle.properties" }}
       - run:
-        command: |
-          . ./.circleci/setenv-circle-ci.sh
-          ./build-and-test-all.sh
+          command: |
+            . ./.circleci/setenv-circle-ci.sh
+            ./build-and-test-all.sh
       - run:
           name: Publish artifacts
           command: |
