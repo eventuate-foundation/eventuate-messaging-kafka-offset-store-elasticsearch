@@ -51,10 +51,6 @@ public class EventuateKafkaConsumerFactory {
   }
 
   private static HttpHost getElasticsearchHttpHost() {
-    try {
-      return new HttpHost(InetAddress.getLocalHost(), ElasticsearchConstants.DEFAULT_PORT);
-    } catch (UnknownHostException e) {
-      throw new RuntimeException(e);
-    }
+    return new HttpHost(System.getenv("DOCKER_HOST_IP"), ElasticsearchConstants.DEFAULT_PORT);
   }
 }
