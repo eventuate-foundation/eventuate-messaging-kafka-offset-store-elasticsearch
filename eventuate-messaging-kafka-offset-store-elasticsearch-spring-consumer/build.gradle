@@ -1,0 +1,10 @@
+apply plugin: PublicModulePlugin
+
+dependencies {
+    compile project(":eventuate-messaging-kafka-offset-store-elasticsearch-consumer")
+    compile "io.eventuate.messaging.kafka:eventuate-messaging-kafka-spring-basic-consumer:$eventuateMessagingKafkaVersion"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+}
+
+

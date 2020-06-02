@@ -1,0 +1,12 @@
+apply plugin: PrivateModulePlugin
+
+dependencies {
+    compile project (':eventuate-messaging-kafka-offset-store-elasticsearch-spring-consumer')
+    compile project (':eventuate-messaging-kafka-offset-store-elasticsearch-consumer')
+
+    compile "io.eventuate.messaging.kafka:eventuate-messaging-kafka-spring-producer:$eventuateMessagingKafkaVersion"
+    compile "io.eventuate.messaging.kafka:eventuate-messaging-kafka-spring-common:$eventuateMessagingKafkaVersion"
+    compile "io.eventuate.messaging.kafka:eventuate-messaging-kafka-integration-test:$eventuateMessagingKafkaVersion"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+}
